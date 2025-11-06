@@ -1,0 +1,39 @@
+# configs/rbg.yaml
+data_root: "/home/dils/astroai/task/data"
+raw_dir: "${data_root}/raw"          # optional, for visual checks
+x_train: "${data_root}/split/x_train"
+y_train: "${data_root}/split/y_train"
+x_test:  "${data_root}/split/x_test"
+y_test:  "${data_root}/split/y_test"
+out_dir: "./outputs"
+
+image_size: 32
+norm: "zero_one"          # zero_one | neg_one_one
+batch_size: 256
+num_workers: 2
+pin_memory: true
+
+model:
+  sample_size: 32
+  in_channels: 3          # [noisy_G, R, B]
+  out_channels: 1         # predict noise on G only
+  layers_per_block: 2
+  block_out_channels: [64, 128, 128]
+  down_block_types: ["DownBlock2D", "DownBlock2D", "AttnDownBlock2D"]
+  up_block_types:   ["AttnUpBlock2D", "UpBlock2D", "UpBlock2D"]
+
+scheduler:
+  num_train_timesteps: 1000
+  beta_start: 1.0e-4
+  beta_end: 2.0e-2
+
+train:
+  epochs: 5
+  lr: 2.0e-4
+  weight_decay: 1.0e-4
+  log_every: 100
+  save_every_epochs: 1
+
+sample:
+  n_images: 9
+  nrow: 9
