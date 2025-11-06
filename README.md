@@ -1,8 +1,8 @@
 # AstroAI Task — RB→G Reconstruction
 
 <p align="center">
-  <img src="experiments/compare_diffusion_vs_poly.png" alt="Side-by-side comparison of diffusion vs polynomial reconstruction" width="48%"/>
-  <img src="experiments/scatter_pred_vs_true.png" alt="Predicted vs True scatterplots (Diffusion vs Polynomial)" width="48%"/>
+  <img src="experiments/compare_diffusion_vs_poly.png" alt="Side-by-side comparison of diffusion vs polynomial reconstruction" width="100%"/>
+  <img src="experiments/scatter_pred_vs_true.png" alt="Predicted vs True scatterplots (Diffusion vs Polynomial)" width="100%"/>
 </p>
 
 > **TL;DR**: This repo reconstructs the **green (G)** channel of 32×32 color images from the **red (R)** and **blue (B)** channels.  
@@ -24,7 +24,6 @@
 - [Inference](#inference)
 - [Experiments & Figures](#experiments--figures)
 - [Repo Structure](#repo-structure)
-- [Quickstart](#quickstart)
 
 ## Overview
 The pipeline learns to reconstruct the **G** channel from **R** and **B** on CIFAR‑10 (32×32 RGB).  
@@ -126,13 +125,3 @@ Key, persistent outputs:
 - `models/polynomial_reg/artifacts/rb2g_deg2.joblib`
 - `models/diffusion/outputs/checkpoints/last.pt`
 - `outputs/*` for predicted **G** test images
-
-## Quickstart
-1. Run preprocessing to materialize `data/` splits.
-2. Train the polynomial baseline (`model.py`) and/or the diffusion model (`train.py`).
-3. Run the experiment scripts to generate the figures.
-4. Commit the results and this README to your GitHub repo.
-
----
-
-_Authored for the **astroai_task** project. Feel free to adapt paths and hyper‑parameters for your environment._
